@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "eaab4746-070c-4c91-bdbb-e73e4082ac48": {
+      "ProjectGuid": "eaab4746-070c-4c91-bdbb-e73e4082ac48",
+      "DisplayName": "Counter_01",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
