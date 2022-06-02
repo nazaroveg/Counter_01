@@ -28,9 +28,18 @@ public:
 		if (read_1 == "да" || read_1 == "yes")
 		{
 			std::cout << "Введите начальное значение счётчика: " << std::endl;
-			int number = 0;
-			std::cin >> number;
-			present_value = number;	
+			std::string number1;
+			std::cin >> number1;
+			if (number1 == "=" || number1 == "+" || number1 == "-")
+			{
+				initial();
+				znak(number1);
+			}
+			else
+			{
+				int number = std::stoi(number1);
+				present_value = number;
+			}
 		}
 		else
 		{
