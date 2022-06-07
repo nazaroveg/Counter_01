@@ -14,58 +14,20 @@ public:
 	{
 		std::cout << "текущее значение счётчика = " << present_value << std::endl;
 	}
-	void initial()
+	void initial(int initialization_value)
 	{
-		present_value = create_default;
+
+		present_value = initialization_value;
 	}
-
-	
-	 void read()
-	 {
-		std::string read_1;
-		std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: " << std::endl;
-		std::cin >> read_1;
-		if (read_1 == "да" || read_1 == "yes")
-		{
-			std::cout << "Введите начальное значение счётчика: " << std::endl;
-			std::string number1;
-			std::cin >> number1;
-			if (number1 == "=" || number1 == "+" || number1 == "-")
-			{
-				initial();
-				znak(number1);
-			}
-			else
-			{
-				int number = std::stoi(number1);
-				present_value = number;
-			}
-		}
-		else
-		{
-			present_value = create_default;
-		}
-	 }
-	 void znak(std::string read)
-	 {
-
-		 if (read == "=")
-		 {
-			 print();
-		 }
-
-		 if (read == "+")
-		 {
-			 present_value++; 
-		 }
-
-		 if (read == "-")
-		 {
-			 present_value--;
-		 }
-	 }
+	void increment()
+	{
+		present_value++;
+	}
+	void decrement()
+	{
+		present_value--;
+	}
 	 
-
 private:
 
 	
@@ -83,22 +45,40 @@ int main()
 {
 	setlocale(LC_ALL, "RUS"); 
 	SetConsoleCP(1251);
+	std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: да" << std::endl;
 	std::string read;
-	Counter count{};
-
-	
-	count.read();
-		
-	do
+	std::cin >> read;
+	int initialValue = 1;
+	if (read == "да" || read == "yes")
 	{
-		std::cout << "Введите команду ('+', '-', '=' или 'x'): " << std::endl;
-		std::cin >> read;
-		count.znak(read);
+		std::cout << "Введите начальное значение счётчика: " << std::endl;
+		std::cin >> initialValue;
+	}
+	Counter count;
+	count.initial (initialValue);
 
+	std::cout << "Enter command (+, -, =, x): ";
+	std::string command;
+	std::cin >> command;
+
+	while (command != "x") {
+		if (command == "+") {
+			count.increment();
+		}
+		else if (command == "-") {
+			count.decrement();
+		}
+		else if (command == "=") {
+			 count.print() ;
+		}
+
+		std::cout << "Enter command (+, -, =, x): ";
+		std::cin >> command;
 	}
 
-	while (read != "x");
-	std::cout << "До свидания!";
+	std::cout << "Good bye!" << '\n';
+
+	
 
 
 		
